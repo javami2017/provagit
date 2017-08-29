@@ -1,0 +1,36 @@
+29/08/2017
+CONTINUOS DELIVERY KIT - software configuration management
+http://rogerdudler.github.io/git-guide/index.it.html -->software
+
+SI OCCUPA DEL MONITORAGGIO DI CONTROLLO del software.
+La distribuzione continua è un metodo di sviluppo software DevOps in cui le modifiche al codice vengono applicate a una build, 
+testate e preparate per il rilascio in produzione in modo automatico. 
+Estende l'integrazione continua distribuendo tutte le modifiche al codice all'ambiente di testing e/o di produzione dopo la fase di creazione 
+di build. Se la distribuzione continua viene implementata correttamente, gli sviluppatori hanno sempre a disposizione una build temporanea 
+pronta per la distribuzione che ha già passato un processo di testing standardizzato. 
+
+Con la distribuzione continua, ogni modifica al codice viene applicata a una build, testata e inoltrata in un ambiente 
+di testing non in produzione o temporaneo. Possono essere previste diverse fasi di test in parallelo prima della distribuzione in produzione. 
+Nell'ultima fase, lo sviluppatore approva l'aggiornamento per la produzione. Si tratta di un processo differente rispetto all'implementazione 
+continua, in cui l'inoltro in produzione avviene in automatico senza la necessità di autorizzazione.
+La distribuzione continua consente agli sviluppatori di automatizzare il testing oltre gli unit test, 
+in modo da verificare l'applicazione degli aggiornamenti su vari livelli prima di renderli disponibili ai clienti. 
+Queste prove possono includere test dell'interfaccia, test di caricamento, test di integrazione, test di affidabilità delle API e così via. 
+In questo modo è più semplice per gli sviluppatori analizzare gli aggiornamenti più approfonditamente e rilevare preventivamente eventuali 
+problemi. Grazie al cloud, automatizzare la creazione e la replica di più di un ambiente a scopo di testing è un'operazione molto semplice e 
+poco costosa, al contrario di quanto avviene in ambienti locali.
+
+I servizi che può dare è il:
+- ripristanare allo stato precedente
+- sei monitorato quando svolgi un progetto
+- gestire il progetto in gruppo, condivisione
+-  Processo di rilascio del software automatizzato
+-Maggiore produttività per gli sviluppatori
+-Bug individuati e risolti con maggiore prontezza
+-Aggiornamenti più rapidi
+
+
+Usiamo la Git, i comandi sono:
+
+
+
