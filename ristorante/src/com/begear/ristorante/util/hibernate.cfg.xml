@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ristorante</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<!-- Hibernate can select it's own dialect, and if you force a dialect 
+			it can cause all kinds of weird errors. I've never had a problem with Hibernate 
+			selecting a dialect for me. -->
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property> -->
+
+		<!-- Abilita la stampa sul log di default delle istruzioni SQL che vengono 
+			eseguite da hibernate; Spesso usata congiuntamente a format_sql per facilitare 
+			le operazioni di debug -->
+		<property name="show_sql">true</property>
+		<!-- <property name="format_sql">true</property> -->
+
+
+		<!-- L'oggetto SessionFactory è garantito funzionare correttamente in ambito 
+			concorrente; Esso offre il metodo getCurrentSession() per accedere alla sessione 
+			corrente. Il comportamento di tale metodo dipende da come è stato configurato 
+			il framework attraverso il parametro hibernate.current_session_context_class. -->
+		<!-- thread: ogni thread dispone della propria sessione: adatto quando 
+			si vuole implementare una politica di tipo session per request, come nel 
+			caso di un servlet container -->
+		<!-- jta: ogni transazione JTA dispone della propria sessione -->
+		<!-- managed: ogni thread dispone della propria sessione, ma il programmatore 
+			è responsabile della gestione di alcune fasi del suo ciclo di vita -->
+		<!-- custom: il programmatore è responsabile di gestire completamente il 
+			ciclo di vita di una sessione -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- La proprietà hbm2ddl.auto Indica quali azioni devono essere eseguite 
+			all'inizializzazione del programma per allineare la definizione delle entità 
+			lato Java con le tabelle del dbms. -->
+		<!-- Possibili valori: -->
+		<!-- create – crea la base dati sulla base della definizione delle entità; -->
+		<!-- create-drop – crea la base dati e poi la elemina quando viene chiusa 
+			esplicitamente la SessionFactory; -->
+		<!-- update – aggiorna la base dati perché rifletta la definizione delle 
+			entità: NON USARE in produzione; -->
+		<!-- validate – verifica la corrispondenza tra entità e dbms e lancia un'eccezione 
+			in caso di discrepanze -->
+		<property name="hbm2ddl.auto">validate</property>
+
+		<!-- Disabilita la cache di secondo livello cache -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+		<!-- Mapping -->
+		<mapping resource="com/begear/ristorante/model/entity/Client.hbm.xml"></mapping>
+		<mapping resource="com/begear/ristorante/model/entity/Dish.hbm.xml"></mapping>
+		<mapping resource="com/begear/ristorante/model/entity/Order.hbm.xml"></mapping>
+		<mapping resource="com/begear/ristorante/model/entity/Table.hbm.xml"></mapping>
+		<mapping resource="com/begear/ristorante/model/entity/Waiter.hbm.xml"></mapping>
+
+	</session-factory>
+</hibernate-configuration> 

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+*{
+	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
+	background-color: #333;
+	color: white;
+}
+
+
+h1, .tavoli, .clienti, .numero{
+	/*color: white;*/
+	font-family: Arial;
+}

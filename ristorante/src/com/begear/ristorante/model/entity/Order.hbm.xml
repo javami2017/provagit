@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.begear.ristorante.model.entity.Order" table="ordine">
+		<meta attribute="class-description">
+			Mapping between persistent class - Order with
+			MySQL table - ordine
+		</meta>
+		<id name="id" column="idordine" type="int">
+			<generator class="native" />
+		</id>
+		<many-to-one name="client"
+			class="com.begear.ristorante.model.entity.Client" column="x_idcliente" />
+		<many-to-one name="dish"
+			class="com.begear.ristorante.model.entity.Dish" column="x_idpiatto" />
+		<property name="payed" column="pagato" type="int" />
+		<property name="ready" column="ready" type="int" />
+		<property name="date" column="dataOrdine" type="timestamp" />
+	</class>
+</hibernate-mapping>

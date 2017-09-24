@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.begear.ristorante.model.entity.Client" table="cliente">
+		<meta attribute="class-description">
+			Mapping between persistent class - Client with
+			MySQL table - cliente
+		</meta>
+		<id name="id" column="idcliente" type="int">
+			<generator class="native" />
+		</id>
+		<property name="name" column="nome" type="string" length="45" />
+		<many-to-one name="table"
+			class="com.begear.ristorante.model.entity.Table" column="x_idtavolo" />
+		<property name="presente" column="presente" type="int" />
+	</class>
+</hibernate-mapping>

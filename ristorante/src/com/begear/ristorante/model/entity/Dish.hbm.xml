@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.begear.ristorante.model.entity.Dish" table="piatto">
+		<meta attribute="class-description">
+			Mapping between persistent class - Dish with
+			MySQL table - piatto
+		</meta>
+		<id name="id" column="idpiatto" type="int">
+			<generator class="native" />
+		</id>
+		<property name="name" column="nomepiatto" type="string"
+			length="45" />
+		<property name="price" column="costo" type="big_decimal" />
+		<property name="course" column="portata" type="string"
+			length="45" />
+	</class>
+</hibernate-mapping>

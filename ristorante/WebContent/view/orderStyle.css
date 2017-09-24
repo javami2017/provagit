@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+* {
+	background-color: #333;
+	font-family: Arial;
+	color: white;
+}
+
+.divTableRow:nth-child(odd){
+	background-color:#666666;
+}
+.divTableRow:nth-child(even){
+	background-color:#999999;
+}
+
+h1, p {
+	text-align: center;
+}
+
+p {
+	margin-bottom: 10px;
+	margin-top: 30px;
+}
+
+.entry {
+	
+}
+
+.divTableCell:first-letter {
+	text-transform: uppercase;
+}
+
+.titolo {
+	float: center;
+}
+
+.client {
+	float: right;
+}
+
+.tavolo {
+	float: left;
+}
+
+#pietanza {
+	width: 340px;
+	font-size: 20px;
+}
+
+#prezzo {
+	width: 30px;
+	font-size: 20px;
+}
+
+#quantita {
+	width: 30px;
+}
+
+.orderButton {
+	padding: 15px 15px 15px 15px;
+	margin-top: 50px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+button {
+	padding: 15px 15px 15px 15px;
+	font-size: 20px;
+}
+
+
+/* DivTable.com */
+.divTable{
+	display: table;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+.divTableCell {
+	vertical-align: middle;
+}
