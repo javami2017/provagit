@@ -1,0 +1,5 @@
+com\riccardofinazzi\hibernate\model\entity\Dog.class
+com\riccardofinazzi\hibernate\model\entity\Owner.class
+com\riccardofinazzi\hibernate\util\HibernateUtil.class
+com\riccardofinazzi\hibernate\controller\BusinessLogic.class
+com\riccardofinazzi\hibernate\util\SysinReader.class
