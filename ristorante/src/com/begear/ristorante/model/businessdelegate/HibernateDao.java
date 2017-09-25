@@ -2,6 +2,10 @@ package com.begear.ristorante.model.businessdelegate;
 
 import java.util.List;
 
+import javax.transaction.Transactional.TxType;
+
+import org.apache.tomcat.util.buf.CharChunk;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -19,10 +23,15 @@ public class HibernateDao implements BusinessService {
 	public List<Dish> getMenu() {
 
 		List<Dish> list = null;
+		Transaction tx = null;
 		try (Session s = HibernateUtil.getCurrentSession()) {
-			Transaction tx = s.beginTransaction();
+			tx = s.beginTransaction();
 			list = s.createQuery("FROM Dish").getResultList();
 			tx.commit();
+		} catch (HibernateException ex) {
+			if (tx != null) tx.rollback();
+			System.out.println("Errore nella lettura del menu.");
+			ex.printStackTrace();
 		}
 		return list;
 	}
@@ -37,10 +46,15 @@ public class HibernateDao implements BusinessService {
 	@Override
 	public void insertOrder(Order order) {
 
+		Transaction tx = null;
 		try (Session s = HibernateUtil.getCurrentSession()) {
-			Transaction tx = s.beginTransaction();
+			tx = s.beginTransaction();
 			s.persist(order);
 			tx.commit();
+		} catch (HibernateException ex) {
+			if (tx != null) tx.rollback();
+			System.out.println("Errore nell'inserire l'ordine.");
+			ex.printStackTrace();
 		}
 	}
 
@@ -53,14 +67,19 @@ public class HibernateDao implements BusinessService {
 	public Client insertClient(String name, Table table, int presente) {
 
 		Client client = null;
+		Transaction tx = null;
 		try (Session s = HibernateUtil.getCurrentSession()) {
-			Transaction tx = s.beginTransaction();
+			tx = s.beginTransaction();
 			client = new Client();
 			client.setName(name);
 			client.setTable(table);
 			client.setPresente(presente);
 			s.persist(client);
 			tx.commit();
+		} catch (HibernateException ex) {
+			if (tx != null) tx.rollback();
+			System.out.println("Errore nell'inserire il cliente " + name);
+			ex.printStackTrace();
 		}
 		return client;
 	}
@@ -94,10 +113,15 @@ public class HibernateDao implements BusinessService {
 	public Waiter getWaiterById(int waiterId) {
 
 		Waiter waiter = null;
+		Transaction tx = null;
 		try (Session s = HibernateUtil.getCurrentSession()) {
-			Transaction tx = s.beginTransaction();
+			tx = s.beginTransaction();
 			waiter = (Waiter) s.get(Waiter.class, waiterId);
 			tx.commit();
+		} catch (HibernateException ex) {
+			if (tx != null) tx.rollback();
+			System.out.println("Non è stato possibile recuperare il cameriere con id: " + waiterId);
+			ex.printStackTrace();
 		}
 		return waiter;
 	}
@@ -107,11 +131,17 @@ public class HibernateDao implements BusinessService {
 	public List<Table> getTables() {
 
 		List<Table> list = null;
+		Transaction tx = null;
 		try (Session s = HibernateUtil.getCurrentSession()) {
-			Transaction tx = s.beginTransaction();
+			tx = s.beginTransaction();
 			list = s.createQuery("FROM Table").getResultList();
 			tx.commit();
+		} catch (HibernateException ex) {
+			if (tx != null) tx.rollback();
+			System.out.println("Errore nel recupero dei tavoli.");
+			ex.printStackTrace();
 		}
+		
 		return list;
 	}
 }
