@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class JdbcUtil {
 
-	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	static {
 		try {
 			Class.forName(DRIVER);
