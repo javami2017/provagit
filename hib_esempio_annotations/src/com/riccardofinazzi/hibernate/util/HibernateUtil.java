@@ -9,28 +9,29 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class HibernateUtil {
 
-	private static StandardServiceRegistry registry;
-	private static SessionFactory sessionFactory;
+	private static StandardServiceRegistry	registry;
+	private static SessionFactory			sessionFactory;
 
 	private static final String $TAG = new String("HIBERNATE_UTIL: ");
 
 	private HibernateUtil() {}
-	
+
 	public static SessionFactory getSessionFactory() {
+
 		if (sessionFactory == null) {
 			try {
-				// Create registry
 				registry = new StandardServiceRegistryBuilder()
-						.configure("/com/riccardofinazzi/hibernate/util/hibernate.cfg.xml").build();
+					.configure("/com/riccardofinazzi/hibernate/util/hibernate.cfg.xml")
+					.build(); /* Create registry */
 
-				// Create MetadataSources
-				MetadataSources sources = new MetadataSources(registry);
+				MetadataSources sources = new MetadataSources(
+					registry); /* Create MetadataSources */
 
-				// Create Metadata
-				Metadata metadata = sources.getMetadataBuilder().build();
+				Metadata metadata = sources.getMetadataBuilder()
+					.build(); /* Create Metadata */
 
-				// Create SessionFactory
-				sessionFactory = metadata.getSessionFactoryBuilder().build();
+				sessionFactory = metadata.getSessionFactoryBuilder()
+					.build(); /* Create SessionFactory */
 
 			} catch (Exception e) {
 				System.out.println($TAG + "couldn't create SessionFactory");
@@ -44,10 +45,12 @@ public class HibernateUtil {
 	}
 
 	public static Session getCurrentSession() {
+
 		return getSessionFactory().getCurrentSession();
 	}
-	
+
 	public static Session getSession() {
+
 		return getSessionFactory().openSession();
 	}
 
