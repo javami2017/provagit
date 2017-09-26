@@ -1,4 +1,4 @@
-package com.mkyong.core;
+package com.begear.spring.model.entity;
 
 /**
  * Spring bean

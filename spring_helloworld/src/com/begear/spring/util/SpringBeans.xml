@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="helloBean" class="com.mkyong.core.HelloWorld">
+	<bean id="helloBean" class="com.begear.spring.model.entity.HelloWorld">
 		<property name="name" value="Mkyong" />
 	</bean>
 
