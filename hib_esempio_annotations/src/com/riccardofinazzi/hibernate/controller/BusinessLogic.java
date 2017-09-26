@@ -28,7 +28,7 @@ public class BusinessLogic {
 
 		// Chiedo al middleware di salvare questo oggetto nel database
 		session.save(o);
-		//session.save(d); /* Objects must be saved or they won't be persisted */
+		session.save(d); /* Objects must be saved or they won't be persisted */
 
 		// fine della transazione: salviamo tramite commit()
 		session.getTransaction().commit();
