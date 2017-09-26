@@ -4,17 +4,28 @@ import java.util.Scanner;
 
 public class SysinReader {
 
-	private Scanner scn = new Scanner(System.in);
+	public String readString(String msg) {
 
-	public String readString( String msg) {
-
-		System.out.println(msg);
-		return scn.nextLine();
+		String s = null;
+		try (Scanner scn = new Scanner(System.in)) {
+			if (scn.hasNextLine()) {
+				System.out.println(msg);
+				s = scn.nextLine();
+			}
+		}
+		return s;
 	}
 
-	public Integer readInteger( String msg) {
+	public Integer readInteger(String msg) {
 
-		System.out.println(msg);
-		return scn.nextInt();
+		Integer i = null;
+		try (Scanner scn = new Scanner(System.in)) {
+			if (scn.hasNextLine()) {
+				System.out.println(msg);
+				i = Integer.parseInt(scn.nextLine());
+			}
+		}
+		return i;
 	}
+	
 }
