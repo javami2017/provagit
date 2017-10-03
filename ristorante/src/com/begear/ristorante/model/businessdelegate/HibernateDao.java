@@ -2,9 +2,6 @@ package com.begear.ristorante.model.businessdelegate;
 
 import java.util.List;
 
-import javax.transaction.Transactional.TxType;
-
-import org.apache.tomcat.util.buf.CharChunk;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
