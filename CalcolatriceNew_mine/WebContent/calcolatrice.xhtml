@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>Calcolatrice con JSF</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<h:body>
+	<h1>Calcolatrice</h1>
+
+	<h:form>
+		<div class="operazione">
+			<h:inputText value="#{calcolatriceBean.operazione}" />
+			<h:commandButton value="calcola"
+				action="#{calcolatriceBean.calcola()}" />
+			<br /> Risultato operazione:
+			<h:outputText value="#{calcolatriceBean.ris}" />
+		</div>
+		<h:dataTable value="#{calcolatriceBean.oper}" var="calc" border="1"
+			cellspacing="1" cellpadding="1" align="center" class="tabella">
+			<h:column>
+				<f:facet name="header">Operazione</f:facet>    				
+               #{calc.operaz}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Risultato</f:facet>    				
+               #{calc.risultato}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Elimina</f:facet>
+				<h:commandButton value="Delete"
+					action="#{calcolatriceBean.deleteOper(calc)}">
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
