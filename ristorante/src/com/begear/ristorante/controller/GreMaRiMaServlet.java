@@ -26,8 +26,8 @@ public class GreMaRiMaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private BusinessDelegate bd = new BusinessDelegate();
-	private Map<Integer, Dish> dishes = new HashMap<Integer, Dish>();
+	private BusinessDelegate bd 	   = new BusinessDelegate();
+	private Map<Integer, Dish> dishes  = new HashMap<Integer, Dish>();
 	private Map<Integer, Table> tables = new HashMap<Integer, Table>();
 	{
 		bd.setServiceType(ServiceType.HIBERNATE);
@@ -41,7 +41,7 @@ public class GreMaRiMaServlet extends HttpServlet {
 		}
 	}
 	private Map<Integer, Client> clienti;
-	private List<Order> ordini;
+	private List<Order> 		 ordini;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,7 +59,7 @@ public class GreMaRiMaServlet extends HttpServlet {
 			if (requestPhase != null && requestPhase.equals("1")) {
 				// inserisce il numero del tavolo e il numero dei clienti
 
-				numTavolo = Integer.parseInt(req.getParameter("tavolo"));
+				numTavolo  = Integer.parseInt(req.getParameter("tavolo"));
 				numClienti = Integer.parseInt(req.getParameter("numero"));
 
 				req.getSession().setAttribute("tavoloSelezionato", numTavolo);
@@ -68,7 +68,7 @@ public class GreMaRiMaServlet extends HttpServlet {
 			} else if (requestPhase != null && requestPhase.equals("2")) {
 
 				// prende il numero del tavolo e dei clienti
-				numTavolo = (Integer) req.getSession().getAttribute("tavoloSelezionato");
+				numTavolo  = (Integer) req.getSession().getAttribute("tavoloSelezionato");
 				numClienti = (Integer) req.getSession().getAttribute("numeroClienti");
 
 				clienti = new HashMap<Integer, Client>();
