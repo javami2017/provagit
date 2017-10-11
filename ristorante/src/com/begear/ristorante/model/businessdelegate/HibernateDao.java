@@ -17,6 +17,7 @@ public class HibernateDao implements BusinessService {
 
 	@Override
 	@SuppressWarnings("unchecked")
+	//metodo per ricavare i dati del menù dal database
 	public List<Dish> getMenu() {
 
 		List<Dish> list = null;
@@ -41,6 +42,7 @@ public class HibernateDao implements BusinessService {
 	}
 
 	@Override
+	//inserisce l'ordine nel database
 	public void insertOrder(Order order) {
 
 		Transaction tx = null;
@@ -61,6 +63,8 @@ public class HibernateDao implements BusinessService {
 	}
 
 	@Override
+	//inserisce il cliente nel database
+	//presente serve per il conto finale e può essere o 0 o 1
 	public Client insertClient(String name, Table table, int presente) {
 
 		Client client = null;
@@ -107,6 +111,7 @@ public class HibernateDao implements BusinessService {
 	}
 
 	@Override
+	//recupera i dati del cameriere attraverso l'id inserito
 	public Waiter getWaiterById(int waiterId) {
 
 		Waiter waiter = null;
@@ -125,6 +130,7 @@ public class HibernateDao implements BusinessService {
 
 	@Override
 	@SuppressWarnings("unchecked")
+	//recupera il tavolo
 	public List<Table> getTables() {
 
 		List<Table> list = null;

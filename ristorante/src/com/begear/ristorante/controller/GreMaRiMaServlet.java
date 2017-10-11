@@ -29,7 +29,7 @@ public class GreMaRiMaServlet extends HttpServlet {
 	private BusinessDelegate bd 	   = new BusinessDelegate();
 	private Map<Integer, Dish> dishes  = new HashMap<Integer, Dish>();
 	private Map<Integer, Table> tables = new HashMap<Integer, Table>();
-	{
+	{ //qua popola le mappe dishes e tables con i piatti e i tavoli già inseriti nel database
 		bd.setServiceType(ServiceType.HIBERNATE);
 
 		for (Dish dish : bd.getMenu()) {
@@ -75,15 +75,19 @@ public class GreMaRiMaServlet extends HttpServlet {
 
 				// inserisce nella mappa i vari clienti sotto forma di oggetto Client
 				for (int i = 1; i <= numClienti; i++) {
-					Client c = bd.insertClient(req.getParameter("cliente_" + i), tables.get(numTavolo), 1);
+					Client c = bd.insertClient(req.getParameter("cliente_" + i), // client
+													  tables.get(numTavolo), 1); // table, presente
 					clienti.put(c.getId(), c);
 				}
 
-				// proceedToOrder è true e quindi si può passare alla visualizzazione del menù
+				// se proceedToOrder è true si può passare alla visualizzazione del menù
 				if (req.getParameter("proceedToOrder").equals("true")) {
-					req.getSession().setAttribute("menu", bd.getMenu());
-					req.getSession().setAttribute("sessionPhase", "2");
+					req.getSession().setAttribute("menu", bd.getMenu()); // recupera il menù e lo setta come attributo
+																			// "menu"
+					req.getSession().setAttribute("sessionPhase", "2"); // setta la sessionPhase a 2 per poter passare
+																		// alla vista menù
 				}
+
 				req.getSession().setAttribute("clienti", clienti);
 			}
 			break;
@@ -92,14 +96,15 @@ public class GreMaRiMaServlet extends HttpServlet {
 			req.getSession().setAttribute("menu", bd.getMenu());
 			ordini = new ArrayList<Order>();
 
-			String idCliente = req.getParameter("clientId");
+			String idCliente = req.getParameter("clientId"); //l'idCliente viene recuperato dal parametro "clientId" della pagina JSP
 			String idPiatto = null;
 
 			// scorre i vari piatti del menù per inserire quelli selezionati nell'ordine
 			for (int i = 1; i <= dishes.size(); i++) {
 				if ((idPiatto = req.getParameter("cb_" + i)) != null) {
-					Order o = new Order(dishes.get(Integer.parseInt(idPiatto)),
-							clienti.get(Integer.parseInt(idCliente)), 0, 0, new Date());
+					Order o = new Order(dishes.get(Integer.parseInt(idPiatto)), 	  //dish
+											clienti.get(Integer.parseInt(idCliente)), //client
+												0, 0, new Date());					  //payed, ready, Date
 					ordini.add(o);
 					bd.insertOrder(o);
 				}
@@ -107,7 +112,7 @@ public class GreMaRiMaServlet extends HttpServlet {
 
 			req.getSession().setAttribute("clienteSelezionato", idCliente);
 			req.getSession().setAttribute("sessionPhase", "3");
-			//adesso la sessionPhase="3" -> fine parte inserimento ordini
+			//adesso sessionPhase="3" => fine parte inserimento ordini
 			break;
 		}
 
